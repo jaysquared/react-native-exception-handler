@@ -211,7 +211,10 @@ void SignalHandler(int signal)
       [NSString stringWithFormat:
        NSLocalizedString(@"Signal %d was raised.", nil),
        signal]
-      userInfo:userInfo]
+      userInfo:
+      [NSDictionary
+       dictionaryWithObject:[NSNumber numberWithInt:signal]
+       forKey:RNUncaughtExceptionHandlerSignalKey]]
      waitUntilDone:YES];
 }
 
